@@ -81,7 +81,9 @@ class Vecap {
 
   iterator erase(iterator pos) {
     auto index = std::distance(values_.begin(), pos);
-    if (index >= values_.size()) return pos;
+    if (index >= values_.size() && index < 0) {
+      return pos;
+    }
 
     for (auto it = indexes_.begin(); it != indexes_.end();) {
       if (it->second == index) {
